@@ -123,8 +123,8 @@ class Drawing:
         imgWidth, imgHeight = self.calcRenderSize()
         startStr = '''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="{}" height="{}" viewBox="{} {} {} {}"'''.format(
-            imgWidth, self.unit, imgHeight, self.unit *self.viewBox)
+     width="{}{}" height="{}{}" viewBox="{} {} {} {}"'''.format(
+            imgWidth, self.unit, imgHeight, self.unit, *self.viewBox)
         endStr = '</svg>'
         outputFile.write(startStr)
         elementsModule.writeXmlNodeArgs(self.svgArgs, outputFile)
