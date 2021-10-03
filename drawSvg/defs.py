@@ -82,6 +82,17 @@ class FilterItem(DrawingDefSub):
     def __init__(self, tag_name, **args):
         super().__init__(**args)
         self.TAG_NAME = tag_name
+        
+class Style(DrawingDef):
+    ''' Define the style for classes'''
+    TAG_NAME = 'style'
+
+class StyleItem(DrawingDefSub):
+    ''' A child of Filter with any tag name'''
+    hasContent = False
+    def __init__(self, tag_name, **args):
+        super().__init__(**args)
+        self.TAG_NAME = tag_name
 
 class Marker(DrawingDef):
     ''' A small drawing that can be placed at the ends of (or along) a path.
