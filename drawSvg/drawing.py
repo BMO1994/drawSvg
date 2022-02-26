@@ -26,13 +26,13 @@ class Drawing:
         self.height = height
         self.unit = unit
         if origin == 'center':
-            self.viewBox = (-width/2, -height/2, width, height)
+            self.viewBox = [-width/2, -height/2, width, height]
         else:
             origin = tuple(origin)
             assert len(origin) == 2
             self.viewBox = origin + (width, height)
-        self.viewBox = (self.viewBox[0], -self.viewBox[1]-self.viewBox[3],
-                        self.viewBox[2], self.viewBox[3])
+        self.viewBox = [self.viewBox[0], -self.viewBox[1]-self.viewBox[3],
+                        self.viewBox[2], self.viewBox[3]]
         self.elements = []
         self.orderedElements = defaultdict(list)
         self.otherDefs = []
