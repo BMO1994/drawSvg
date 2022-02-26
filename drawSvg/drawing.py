@@ -34,6 +34,7 @@ class Drawing:
         self.viewBox = [self.viewBox[0], -self.viewBox[1]-self.viewBox[3],
                         self.viewBox[2], self.viewBox[3]]
         self.elements = []
+        self.ids = []
         self.orderedElements = defaultdict(list)
         self.otherDefs = []
         self.pixelScale = 1
@@ -82,8 +83,10 @@ class Drawing:
     def append(self, element, *, z=None):
         if z is not None:
             self.orderedElements[z].append(element)
+            self.ids[z].append(element.id)
         else:
             self.elements.append(element)
+            self.ids.append(element.id)
     def extend(self, iterable, *, z=None):
         if z is not None:
             self.orderedElements[z].extend(iterable)
