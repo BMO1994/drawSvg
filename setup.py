@@ -29,10 +29,5 @@ setup(
         'Framework :: IPython',
         'Framework :: Jupyter',
     ],
-    install_requires = [
-        'cairoSVG',
-        'numpy',
-        'imageio',
-    ],
 )
 
