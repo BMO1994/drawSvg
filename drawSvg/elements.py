@@ -390,7 +390,7 @@ class Text(DrawingParentElement):
         # Check for the special case of multi-line text on a path
         # This is inconsistently implemented by renderers so we return a group
         # of single-line text on paths instead.
-        self.id = kwargs['id']
+
         if path is not None and not _skipCheck:
             text, _ = self._handleTextArgument(text, True)
             if len(text) > 1:
@@ -573,7 +573,6 @@ class Circle(DrawingBasicElement):
         SVG node e.g. fill="red", stroke="#ff4477", stroke_width=2. '''
     TAG_NAME = 'circle'
     def __init__(self, cx, cy, r, **kwargs):
-        self.id = kwargs['id']
         try:
             cy = -cy
         except TypeError:
@@ -639,7 +638,6 @@ class Path(DrawingBasicElement):
         SVG node e.g. fill="red", stroke="#ff4477", stroke_width=2. '''
     TAG_NAME = 'path'
     def __init__(self, d='', **kwargs):
-        self.id = kwargs['id']
         super().__init__(d=d, **kwargs)
     def append(self, commandStr, *args):
         if len(self.args['d']) > 0:
@@ -706,7 +704,6 @@ class Line(Lines):
         Additional keyword arguments are output as additional properties to the
         SVG node e.g. fill="red", stroke="#ff4477", stroke_width=2. '''
     def __init__(self, sx, sy, ex, ey, **kwargs):
-        self.id = kwargs['id']
         super().__init__(sx, sy, ex, ey, close=False, **kwargs)
 
 class Arc(Path):

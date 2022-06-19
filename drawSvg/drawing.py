@@ -5,7 +5,6 @@ import urllib.parse
 import re
 from collections import defaultdict
 
-from . import Raster
 from . import elements as elementsModule
 
 
@@ -177,13 +176,7 @@ class Drawing:
     def saveSvg(self, fname, encoding='utf-8'):
         with open(fname, 'w', encoding=encoding) as f:
             self.asSvg(outputFile=f)
-    def savePng(self, fname):
-        self.rasterize(toFile=fname)
-    def rasterize(self, toFile=None):
-        if toFile:
-            return Raster.fromSvgToFile(self.asSvg(), toFile)
-        else:
-            return Raster.fromSvg(self.asSvg())
+
     def _repr_svg_(self):
         ''' Display in Jupyter notebook '''
         if not self.displayInline:
