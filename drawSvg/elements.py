@@ -385,14 +385,14 @@ class Text(DrawingParentElement):
         are always spaced as if letter_spacing=1. '''
     TAG_NAME = 'text'
     hasContent = True
-    def __new__(cls, text, *args, path=None, id=None, _skipCheck=False,
+    def __new__(self, text, *args, path=None, id=None, _skipCheck=False,
                 **kwargs):
         # Check for the special case of multi-line text on a path
         # This is inconsistently implemented by renderers so we return a group
         # of single-line text on paths instead.
-        self.id = **kwargs['id']
+        self.id = kwargs['id']
         if path is not None and not _skipCheck:
-            text, _ = cls._handleTextArgument(text, True)
+            text, _ = self._handleTextArgument(text, True)
             if len(text) > 1:
                 # Special case
                 g = Group(id=id)
@@ -402,7 +402,7 @@ class Text(DrawingParentElement):
                     g.append(Text(subtext, *args, path=path, _skipCheck=True,
                                   **kwargs))
                 return g
-        return super().__new__(cls)
+        return super().__new__(self)
     def __init__(self, text, fontSize, x=None, y=None, *, center=False,
                  valign=None, lineHeight=1, lineOffset=0, path=None,
                  startOffset=None, pathArgs=None, tspanArgs=None,
