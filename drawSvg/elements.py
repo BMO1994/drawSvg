@@ -403,7 +403,7 @@ class Text(DrawingParentElement):
                                   **kwargs))
                 return g
         return super().__new__(self)
-    def __init__(self, text, x=None, y=None, *, center=False,
+    def __init__(self, text, fontSize, x=None, y=None, *, center=False,
                  valign=None, lineHeight=1, lineOffset=0, path=None,
                  startOffset=None, pathArgs=None, tspanArgs=None,
                  cairoFix=True, _skipCheck=False, **kwargs):
@@ -465,7 +465,7 @@ class Text(DrawingParentElement):
                     tspanArgs.setdefault('dx', -1)
                 pathArgs.setdefault('startOffset', '100%')
 
-        super().__init__(x=x, y=y, **kwargs)
+        super().__init__(x=x, y=y, font_size=fontSize, **kwargs)
         self._textPath = None
         if singleLine:
             self.escapedText = xml.escape(text[0])
